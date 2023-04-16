@@ -263,7 +263,7 @@ class Question implements JsonSerializable
         $stmt = driver()->prepare($query);
 
         if (!isset($this->id)) {
-            $this->id = (int)GeneratorUtils::uuid(16, range(0, 9));
+            $this->id = (int) GeneratorUtils::uuid(16, range(0, 9));
         }
 
         return $stmt->execute([
@@ -312,11 +312,21 @@ class Question implements JsonSerializable
     {
         $stmt = driver()->prepare("SELECT COUNT(*) FROM comments WHERE question = :question");
         $stmt->execute(["question" => $this->id]);
-        return (int)$stmt->fetchColumn();
+        return (int) $stmt->fetchColumn();
     }
 
-    public static function createFromDatabase(int $id, string $title, string $description, Carbon $posted, User $poster, array $tags, int $upVotes, int $downVotes, bool $answered, int $views): self
-    {
+    public static function createFromDatabase(
+        int $id,
+        string $title,
+        string $description,
+        Carbon $posted,
+        User $poster,
+        array $tags,
+        int $upVotes,
+        int $downVotes,
+        bool $answered,
+        int $views
+    ): self {
         $post = new self();
 
         $post->id = $id;
