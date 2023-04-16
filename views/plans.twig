@@ -1,0 +1,49 @@
+{% extends "templates/base.twig" %}
+
+{% block head %}
+{{ entrypoint('base')|raw }}
+<title>Developer Hub</title>
+{% endblock %}
+
+{% block body %}
+<div class="ui inverted attached segment" id="main">
+    <div class="ui container">
+        <div class="ui massive inverted header">
+            Plans
+            <div class="sub header">Upgrade your coding game with Developer Hub
+                plans! Choose the plan that fits your needs and take your
+                coding skills to the
+                next level!
+            </div>
+        </div>
+        <div class="ui centered inverted cards">
+            {% for plan in plans %}
+            <div class="ui card">
+                <div class="content">
+                    <div class="header"><span class="ui inverted {{ plan.color }} text">{{ plan.name }}</span></div>
+                    <div class="meta">
+                        <span>${{ plan.getFormattedPrice() }} / month</span>
+                    </div>
+                    <p>{{ plan.description }}</p>
+                    <ul class="list">
+                        {% for perk in plan.perks %}
+                        <li>{{ perk }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% if plan.id != getCurrentUser().plan %}
+                    <div class="ui {{ plan.color }} button">
+                        <i class="add icon"></i>
+                        Purchase {{ plan.name }}
+                    </div>
+                {% else %}
+                    <div class="ui disabled button">
+                        Current Plan
+                    </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "templates/base.twig" %}
+
+{% block head %}
+{{ entrypoint('question')|raw }}
+<title>{{ question.title }} - Developer Hub</title>
+{% endblock %}
+
+{% block body %}
+<div id="main" class="ui attached inverted segment">
+    <div class="ui wide container">
+        <div class="question meta">
+            <div class="ui inverted massive header">
+                {{ question.title }}
+            </div>
+            <span>
+                <muted>Asked</muted> <u data-tooltip="{{ question.getPosted('n/j/Y g:i:s A') }} (UTC)">{{
+                    question.posted.since() }}</u>
+            </span>
+            <span>
+                <muted>Viewed</muted> {{ question.views }} times
+            </span>
+            <span>
+                <muted>Tags</muted>
+                {% for tag in question.tags %}
+                <div class="ui inverted violet horizontal label">{{ tag }}</div>
+                {% endfor %}
+            </span>
+        </div>
+        <div class="ui divider"></div>
+        {{ render("questions.comment", {comment: question, showPosted: false})|raw }}
+        <div class="ui divider"></div>
+        <div class="add comment">
+            <div class="ui inverted header">
+                Add Comment
+            </div>
+            <div class="ui form">
+                <div class="field">
+                    <textarea name="description" placeholder="Add a comment..."></textarea>
+                </div>
+                <button class="ui violet fluid button" type="submit"><i class="comment alternate icon"></i> Post Comment</button>
+            </div>
+        </div>
+        {% for comment in question.fetchComments() %}
+        <div class="ui divider"></div>
+        {{ render("questions.comment", {comment: comment})|raw }}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

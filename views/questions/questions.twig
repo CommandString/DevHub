@@ -1,0 +1,26 @@
+{% extends "templates/base.twig" %}
+
+{% block head %}
+{{ entrypoint('questions')|raw }}
+<title>Developer Hub</title>
+{% endblock %}
+
+{% block body %}
+<div class="ui inverted attached segment" id="main">
+    <div class="ui container">
+        <div id="dimmer" class="ui dimmer">
+            <div class="ui text violet loader">Searching...</div>
+        </div>
+        <div id="search" class="ui fluid icon input">
+            <input type="text" value="{{ query }}" placeholder="Search Questions...">
+            <i class="search link icon"></i>
+        </div>
+        <div class="ui divider"></div>
+        <div id="questions" class="ui inverted relaxed divided selection list">
+            {% for question in questions %}
+            {{ render('questions.questionItem', {question: question})|raw }}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

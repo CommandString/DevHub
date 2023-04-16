@@ -1,0 +1,66 @@
+{% extends "templates/base.twig" %}
+
+{% block head %}
+{{ entrypoint('register')|raw }}
+<title>Registration - Developer Hub</title>
+{% endblock %}
+
+{% block body %}
+<div id="main" class="ui attached inverted segment">
+    <div class="ui massive inverted dividing header">Registration</div>
+    <form method="POST" action="/register" class="ui large {{ errors is empty ? '' : 'error' }} form">
+        <div class="ui left aligned inverted header">Contact Information</div>
+        <div class="equal width fields">
+            <div class="field">
+                <input type="text" name="fname" value="{{ (fname != null) ? fname : "" }}" placeholder="First Name">
+            </div>
+            <div class="field">
+                <input type="text" name="lname" value="{{ (lname != null) ? lname : "" }}" placeholder="Last Name">
+            </div>
+        </div>
+        <div class="field"><input type="text" name="email" value="{{ (email != null) ? email : "" }}"
+                placeholder="Email Address">
+        </div>
+        <div class="ui divider"></div>
+        <div class="ui left aligned inverted header">Profile</div>
+        <div class="field">
+            <input type="text" name="username" value="{{ (username != null) ? username : "" }}" placeholder="Username">
+        </div>
+        <div class="ui divider"></div>
+        <div class="ui left aligned inverted header">Password</div>
+        <div class="equal width fields">
+            <div class="field">
+                <input type="password" name="password" value="{{ (password != null) ? password : "" }}"
+                    placeholder="Password">
+            </div>
+            <div class="field">
+                <input type="password" name="confirm_password"
+                    value="{{ (confirmPassword != null) ? confirmPassword : "" }}" placeholder="Confirm Password">
+            </div>
+        </div>
+        <button class="ui big fluid violet button">Register</button>
+        {% if errors ?? [] is empty %}
+        <div class="ui inverted centered large message">
+            <div class="header">
+                Already have an account?
+            </div>
+            <p>Login <a href="/login">here</a> and continue to reach your <b><span class="ui purple text">full
+                        potential</span></b>
+            </p>
+        </div>
+        {% else %}
+        <div class="ui inverted error large message">
+            <div class="header">
+                Please fix the following errors:
+            </div>
+            <ul class="centered list">
+                {% for error in errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </form>
+</div>
+</div>
+</div>
+{% endblock %}

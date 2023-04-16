@@ -1,0 +1,24 @@
+<div onclick="window.open('/questions/{{ question.id }}', '_parent')" class="item">
+    <div class="right floated">
+        <span class="ui green text" style="margin-right: 5px"><i class="up arrow icon"></i>{{
+            question.upVotes }}</span><br>
+        <span class="ui red text" style="margin-right: 5px"><i class="down arrow icon"></i>{{
+            question.downVotes }}</span><br>
+        <span class="ui teal text">
+            <i class="eye icon"></i> {{ question.views }}
+        </span><br>
+        <span class="ui blue text" style="margin-right: 5px"><i class="comment dots icon"></i>{{
+            question.getTotalComments() }}</span><br>
+        <span>{{ question.answered == 0 ? '<i class="red times icon"></i>' : '<i
+                class="green check icon"></i>'}}</span>
+    </div>
+    <div class="content">
+        <div class="header">{{ question.title }}</div>
+        {{ ellipses(question.description, 350) }}
+        <div class="tags">
+            {% for tag in question.tags %}
+            <div class="ui inverted violet horizontal label">{{ tag }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

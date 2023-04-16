@@ -1,0 +1,22 @@
+@import "../colors";
+
+.ui.footer.segment {
+    padding: 4em 0em;
+    padding-bottom: 2em;
+    background: linear-gradient(#00000080, #00000080), linear-gradient(135deg, $primary, $secondary);
+
+    h4.header {
+        font-size: 1.6em;
+        color: var(--lighter-brown);
+    }
+
+    input {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .button {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+}

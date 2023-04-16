@@ -1,0 +1,32 @@
+#main {
+    img {
+        display: inline-block !important;
+        margin-right: 5px;
+
+        &+div {
+            display: inline-block;
+            vertical-align: top;
+            padding: 20px 0px;
+        }
+    }
+
+    min-height: 550px !important;
+
+    [data-tab="questions"] {
+        &.segment {
+            padding: 0 !important;
+
+            .item {
+                padding: 14px;
+            }
+        }
+
+        .tags {
+            margin-top: 5px;
+            height: 25px;
+            overflow: hidden;
+            line-height: 25px;
+            width: inherit;
+        }
+    }
+}

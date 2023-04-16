@@ -1,0 +1,12 @@
+p {
+    font-size: 20px;
+}
+
+#main {
+    padding: 130px 0;
+    --color: #00000099;
+    background-image: linear-gradient(var(--color), var(--color)), url("../img/space.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

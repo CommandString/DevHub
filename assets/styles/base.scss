@@ -1,0 +1,30 @@
+@import "./colors";
+
+a {
+    color: darken($secondary, 20);
+    transition: 0.2s;
+
+    &:hover {
+        color: $secondary;
+    }
+}
+
+span.muted,
+muted {
+    opacity: 0.6;
+}
+
+[data-tooltip] {
+    &::after {
+        // background-color: $secondary !important;
+        background: linear-gradient(#00000080, #00000080), linear-gradient(135deg, $primary, $secondary) !important;
+        color: white !important;
+        transition: inherit !important;
+    }
+
+    &::before {
+        transition: inherit !important;
+    }
+
+    transition: 0.3s;
+}

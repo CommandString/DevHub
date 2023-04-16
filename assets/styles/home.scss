@@ -1,0 +1,36 @@
+@import "./colors";
+
+#hero {
+    $trans: 0.2;
+    background-image: url("../img/coding3.jpg");
+    height: 750px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    >.header {
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+        max-width: 400px;
+
+        >span {
+            font-weight: lighter;
+        }
+    }
+}
+
+#action-call {
+    padding: 100px 50px;
+
+    .header {
+        display: inline-block;
+        width: fit-content;
+        vertical-align: top;
+    }
+
+    background-image: linear-gradient(#00000080, #00000080), url("../img/coding2.jpg") !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -1,0 +1,16 @@
+{
+    "dependencies": {
+        "core-js": "^3.30.0",
+        "fomantic-ui": "^2.9.2",
+        "node-sass": "^8.0.0",
+        "sass-loader": "^13.2.1",
+        "scss": "^0.2.4"
+    },
+    "devDependencies": {
+        "@symfony/webpack-encore": "^4.2.0"
+    },
+    "scripts": {
+        "assets-dev": "encore dev --watch",
+        "php-dev": "php -S localhost:8000 public/index.php"
+    }
+}

@@ -1,0 +1,30 @@
+{% extends "templates/base.twig" %}
+
+{% block head %}
+{{ entrypoint('404')|raw }}
+<title>Page Not Found - Developer Hub</title>
+{% endblock %}
+
+{% block body %}
+<div id="main" class="ui inverted attached segment">
+    <div class="ui center aligned container">
+        <div id="poem">
+            <div class="ui massive inverted header">Page Not Found</div>
+            <p>
+                Lost in the digital maze,<br>
+                This 404 page, a dead end phase.<br>
+                But take a breath, let go of stress,<br>
+                For in this space, a moment to rest.<br>
+            </p>
+            <p>
+                Reflect and find some inner peace,<br>
+                A break from the web's ceaseless increase.<br>
+                Though lost for now, fear not my friend,<br>
+                For soon enough, you'll find your way again.
+            </p>
+        </div>
+        <br>
+        <a href="/"><div class="ui large violet button">Return Home</div></a>
+    </div>
+</div>
+{% endblock %}

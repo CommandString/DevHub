@@ -1,0 +1,60 @@
+@import "./colors";
+
+#main {
+    .question.meta {
+        span + span {
+            margin-left: 15px;
+        }
+    }
+
+    .comment {
+        .vote {
+            font-size: 20px;
+            line-height: 30px;
+            width: fit-content;
+            text-align: center;
+            display: inline-block;
+
+            span {
+                margin-left: -3px;
+            }
+
+            i,
+            span {
+                display: block;
+            }
+
+            i + span,
+            span + i {
+                margin-top: 6px;
+            }
+
+            i {
+                cursor: pointer;
+                transition: color 0.2s;
+
+                &.green:hover {
+                    color: lighten($greenInverted, 20) !important;
+                    text-shadow: $greenInverted 0px 0px 10px;
+                }
+
+                &.red:hover {
+                    color: lighten($redInverted, 20) !important;
+                    text-shadow: $redInverted 0px 0px 10px;
+                }
+            }
+        }
+
+        .content {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .meta {
+            float: right;
+            text-align: right;
+        }
+    }
+
+    min-height: 600px;
+}

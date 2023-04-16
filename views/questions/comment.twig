@@ -1,0 +1,26 @@
+<div class="comment">
+    {% set votes = comment.upvotes - comment.downvotes %}
+    <div class="vote">
+        <i class="up arrow green icon"></i>
+        <span class="ui {{ votes > 0 ? 'green' : votes == 0 ? '' : 'red' }} text">{{ votes }}</span>
+        <i class="down arrow red icon"></i>
+    </div>
+    <div class="content">
+        <div class="text">
+            {{ comment.description }}
+        </div>
+    </div>
+
+    <div class="meta">
+        {% if showPosted ?? true %}
+        <span>
+            <muted>Posted</muted> <u data-tooltip="{{ comment.getPosted('n/j/Y g:i:s A') }} (UTC)">{{
+                comment.posted.since() }}</u><br>
+        </span>
+        {% endif %}
+        <span>
+            <img src="/img/logo.png" alt="Profile Picture" class="ui mini avatar image"> <a
+                href="/users/{{ comment.poster.id }}">{{ comment.poster.username }}</a>
+        </span>
+    </div>
+</div>

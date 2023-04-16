@@ -1,0 +1,44 @@
+{% extends "templates/base.twig" %}
+
+{% block head %}
+{{ entrypoint('home')|raw }}
+<title>Developer Hub</title>
+{% endblock %}
+
+{% block body %}
+<div id="hero" class="ui attached inverted segment">
+    <div class="ui massive header">
+        <img src="/img/logo.png" alt="Logo">
+        Developer Hub
+        <br>
+        <span class="ui small text">Your ultimate resource for coding expertise. Join a thriving community of developers
+            and get instant answers to your questions.</span>
+    </div>
+</div>
+
+<div id="action-call" class="ui center aligned attached inverted segment">
+    <div class="ui massive header">Register now to unlock your full potential.</div>
+    <form action="/register" class="ui inverted large form" method="get">
+        <div class="equal width fields">
+            <div class="field">
+                <input type="text" placeholder="Username" name="username">
+            </div>
+            <div class="field">
+                <input type="email" placeholder="Email" name="email">
+            </div>
+        </div>
+        <div class="equal width fields">
+            <div class="field">
+                <input type="text" placeholder="First Name" name="fname">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Last Name" name="lname">
+            </div>
+        </div>
+        <div class="field">
+            <button class="ui fluid violet big button">Register</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

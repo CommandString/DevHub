@@ -1,0 +1,17 @@
+#main {
+    #questions.list {
+        .item {
+            padding: 14px;
+        }
+
+        .tags {
+            margin-top: 5px;
+            height: 25px;
+            overflow: hidden;
+            line-height: 25px;
+            width: inherit;
+        }
+    }
+
+    min-height: 600px;
+}

@@ -1,0 +1,22 @@
+<div id="navigation" class="ui large inverted menu">
+    <div onclick="window.open('/', '_parent')" class="logo item">
+        <img src="/img/logo.png" alt="Logo">
+    </div>
+    <div class="right menu">
+        {% if isLoggedIn() == false %}
+        <a href="/register" class="item"><i class="user plus icon"></i></a>
+        <a href="/login" class="item"><i class="sign in alternate icon"></i></a>
+        {% else %}
+        <a href="/users/{{ getCurrentUser().id }}" class="item"><i class="address card icon"></i></a>
+        <a href="/logout" class="item"><i class="sign out alternate icon"></i></a>
+        {% endif %}
+        <a href="/plans" class="item"><i class="money check alternate icon"></i></a>
+        <a href="/questions" id="nav-questions" class="item"><i class="question circle icon"></i></a>
+        <div class="item" id="nav-search">
+            <div class="ui icon input">
+                <input type="text" placeholder="Search Questions...">
+                <i class="search link icon"></i>
+            </div>
+        </div>
+    </div>
+</div>
