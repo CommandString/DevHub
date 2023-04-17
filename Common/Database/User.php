@@ -299,7 +299,7 @@ class User implements JsonSerializable
                     $this,
                     $row['type'],
                     (new Carbon())->setTimestamp($row['date']),
-                    $row['data']
+                    json_decode($row['data'], true)
                 );
             }
         }
