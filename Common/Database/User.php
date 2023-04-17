@@ -290,7 +290,7 @@ class User implements JsonSerializable
      */
     public function fetchActivities(): array
     {
-        $stmt = driver()->prepare('SELECT * FROM activities WHERE user_id = :user_id');
+        $stmt = driver()->prepare('SELECT * FROM activities WHERE user_id = :user_id ORDER BY date DESC');
         $stmt->execute(['user_id' => $this->id]);
 
         if ($stmt->rowCount() > 0) {
