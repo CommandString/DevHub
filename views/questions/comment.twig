@@ -1,9 +1,9 @@
 <div class="comment">
     {% set votes = comment.upvotes - comment.downvotes %}
     <div class="vote">
-        <i class="up arrow green icon"></i>
+        <i comment-id="{{ comment.id }}" class="up arrow green icon"></i>
         <span class="ui {{ votes > 0 ? 'green' : votes == 0 ? '' : 'red' }} text">{{ votes }}</span>
-        <i class="down arrow red icon"></i>
+        <i comment-id="{{ comment.id }}" class="down arrow red icon"></i>
     </div>
     <div class="content">
         <div class="text">
