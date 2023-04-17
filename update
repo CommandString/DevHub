@@ -1,0 +1,5 @@
+#!/bin/bash
+git pull origin master
+npm update
+composer u
+npx encore production
