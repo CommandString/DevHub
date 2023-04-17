@@ -344,4 +344,30 @@ class Question implements JsonSerializable
 
         return $post;
     }
+
+    public function hasUserAlreadyUpVoted(User $user): bool
+    { // TODO : Optimize this
+        $activities = $user->fetchActivities();
+
+        foreach ($activities as $activity) {
+            if ($activity->getData()['question'] ?? null === $this->id && $activity->getType() === Activity::UPVOTE_QUESTION) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function hasUserAlreadyDownVoted(User $user): bool
+    { // TODO make this more efficient
+        $activities = $user->fetchActivities();
+
+        foreach ($activities as $activity) {
+            if ($activity->getData()['question'] ?? null === $this->id && $activity->getType() === Activity::DOWNVOTE_QUESTION) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
