@@ -6,7 +6,10 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Tnapf\Router\Interfaces\RequestHandlerInterface;
+use Twig\Functions\Ellipses;
+use Common\Database\Question as QuestionModel;
 
+use function Common\createOgTags;
 use function Common\render;
 
 class Question implements RequestHandlerInterface
@@ -17,9 +20,12 @@ class Question implements RequestHandlerInterface
         stdClass $args,
         callable $next
     ): ResponseInterface {
+        /** @var QuestionModel */
         $question = $args->question;
         $question->view()->commit();
 
-        return render("questions.question", compact("question"));
+        $og = createOgTags($question->getTitle(), "/questions/{$question->getId()}", Ellipses::method($question->getDescription(), 100));
+
+        return render("questions.question", compact("question", "og"));
     }
 }
