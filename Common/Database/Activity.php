@@ -84,7 +84,7 @@ class Activity
         $stmt = driver()->prepare($query);
 
         if (!isset($this->id)) {
-            $this->id = (int)GeneratorUtils::uuid(16, range(0, 9));
+            $this->id = (int)GeneratorUtils::uuid(16, range(1, 9));
         }
 
         return $stmt->execute([

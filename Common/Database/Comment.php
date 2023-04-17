@@ -123,7 +123,7 @@ class Comment
         ;
 
         if (!isset($this->id)) {
-            $this->id = (int) GeneratorUtils::uuid(16, range(0, 9));
+            $this->id = (int) GeneratorUtils::uuid(16, range(1, 9));
         }
 
         $stmt = driver()->prepare($query);
