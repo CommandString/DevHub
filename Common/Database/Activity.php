@@ -77,7 +77,7 @@ class Activity
     public function commit(): bool
     {
         $query = !isset($this->id) ?
-            "INSERT INTO activities (user_id, type, date, data) VALUES (:user_id, :type, :date, :data)" :
+            "INSERT INTO activities (id, user_id, type, date, data) VALUES (:id, :user_id, :type, :date, :data)" :
             "UPDATE activities SET user_id = :user_id, type = :type, date = :date, data = :data WHERE id = :id"
         ;
 
@@ -113,11 +113,11 @@ class Activity
             User::fetchById($row->user_id),
             $row->type,
             (new Carbon())->setTimestamp($row->date),
-            $row->data
+            json_decode($row->data, true)
         );
     }
 
-    public static function createFromDatabase(int $id, User $user, int $type, Carbon $date, stdClass $data): self
+    public static function createFromDatabase(int $id, User $user, int $type, Carbon $date, array $data): self
     {
         $activity = new self();
 
