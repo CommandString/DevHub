@@ -17,8 +17,6 @@ class Ellipses extends TwigFunction
 
     public static function getMethod(): callable
     {
-        return function (string $string, int $length): string {
-            return self::method($string, $length);
-        };
+        return fn($string, $length) => self::method($string, $length);
     }
 }
