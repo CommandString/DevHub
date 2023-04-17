@@ -22,22 +22,6 @@ class Questions implements RequestHandlerInterface
         callable $next
     ): ResponseInterface {
         $query = $request->getQueryParams()['q'] ?? null;
-        $questions = driver()->query("SELECT * FROM questions")->fetchAll();
-
-        foreach ($questions as &$question) {
-            $question = QuestionModel::createFromDatabase(
-                $question['id'],
-                $question['title'],
-                $question['description'],
-                (new Carbon())->setTimestamp($question['posted']),
-                User::fetchById($question['poster']),
-                json_decode($question['tags']),
-                $question['upvotes'],
-                $question['downvotes'],
-                $question['answered'],
-                $question['views']
-            );
-        }
 
         return render("questions.questions", compact("questions", "query"));
     }

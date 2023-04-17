@@ -16,11 +16,7 @@
             <i class="search link icon"></i>
         </div>
         <div class="ui divider"></div>
-        <div id="questions" class="ui inverted relaxed divided selection list">
-            {% for question in questions %}
-            {{ render('questions.questionItem', {question: question})|raw }}
-            {% endfor %}
-        </div>
+        <div id="questions" class="ui inverted relaxed divided selection list"></div>
     </div>
 </div>
 {% endblock %}
