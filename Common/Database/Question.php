@@ -286,7 +286,7 @@ class Question implements JsonSerializable
     {
         $comments = [];
 
-        $stmt = driver()->prepare("SELECT * FROM comments WHERE question = :question ORDER BY upvotes - downvotes DESC");
+        $stmt = driver()->prepare("SELECT * FROM comments WHERE question = :question ORDER BY posted DESC");
         $stmt->execute(["question" => $this->id]);
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
