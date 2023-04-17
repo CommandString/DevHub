@@ -17,6 +17,6 @@ class NotFound implements RequestHandlerInterface
         stdClass $args,
         callable $next
     ): ResponseInterface {
-        return render("404");
+        return render("404")->withStatus(404);
     }
 }
