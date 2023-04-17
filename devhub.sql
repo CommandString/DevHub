@@ -2,9 +2,9 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE TABLE `activites` (
+CREATE TABLE `activities` (
   `id` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
-  `userid` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
+  `user_id` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `type` int NOT NULL,
   `date` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
   `data` json DEFAULT NULL
@@ -21,11 +21,16 @@ CREATE TABLE `comments` (
   `downVotes` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `newsletters` (
+  `id` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(200) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 CREATE TABLE `questions` (
   `id` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
   `poster` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
   `title` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `posted` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
   `tags` json NOT NULL,
   `upvotes` int NOT NULL,
@@ -45,16 +50,20 @@ CREATE TABLE `users` (
   `username` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `password` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `firstName` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
-  `lastName` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `fname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `lname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `plan` int NOT NULL DEFAULT '1',
   `registered` varchar(10) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-ALTER TABLE `activites`
+ALTER TABLE `activities`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `newsletters`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `questions`
