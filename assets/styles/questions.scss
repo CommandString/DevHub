@@ -1,5 +1,11 @@
 #main {
+    #search + .divider {
+        margin-bottom: 0 !important;
+    }
+
     #questions.list {
+        margin-top: 0 !important;
+
         .item {
             padding: 14px;
         }
