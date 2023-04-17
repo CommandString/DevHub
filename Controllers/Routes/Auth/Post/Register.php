@@ -81,6 +81,22 @@ class Register implements RequestHandlerInterface
             if (preg_match("/[^a-zA-Z0-9_]/", $username)) {
                 $errors[] = "Username can only contain letters, numbers, and underscores";
             }
+
+            if (strlen($fname) > 30) {
+                $errors[] = "First name must be less than 50 characters";
+            }
+
+            if (strlen($lname) > 30) {
+                $errors[] = "Last name must be less than 50 characters";
+            }
+
+            if (strlen($email) > 100) {
+                $errors[] = "Email must be less than 100 characters";
+            }
+
+            if (strlen($username) > 50) {
+                $errors[] = "Username must be less than 50 characters";
+            }
         }
 
         if (empty($errors)) {
