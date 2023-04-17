@@ -7,6 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Tnapf\Router\Interfaces\RequestHandlerInterface;
+use Twig\Functions\GetCurrentUser;
 use Twig\Functions\IsLoggedIn;
 
 class LoggedIn implements RequestHandlerInterface
@@ -17,9 +18,13 @@ class LoggedIn implements RequestHandlerInterface
         stdClass $args,
         callable $next
     ): ResponseInterface {
-        if (!IsLoggedIn::method()) {
+        $user = GetCurrentUser::method();
+
+        if ($user === null) {
             return new RedirectResponse("/login");
         }
+
+        $args->user = $user;
 
         return $next($request, $response, $args);
     }
