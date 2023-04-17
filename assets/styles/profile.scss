@@ -14,7 +14,10 @@
 
     [data-tab="questions"] {
         &.segment {
-            padding: 0 !important;
+
+            &.not-empty {
+                padding: 0 !important;
+            }
 
             .item {
                 padding: 14px;

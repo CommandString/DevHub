@@ -44,7 +44,10 @@
                     </div>
                 </div>
             </div>
-            <div class="ui inverted attached tab segment" data-tab="questions">
+            <div class="ui inverted attached tab {{ questions is empty ? '' : 'not-empty' }} segment" data-tab="questions">
+                {% if questions is empty %}
+                <div class="ui large center aligned header">No Questions Asked</div>
+                {% else %}
                 <div class="ui inverted relaxed divided selection list">
                     {% for question in questions %}
                     <div onclick="window.open('/questions/{{ question.id }}', '_parent')" class="item">
@@ -73,7 +76,7 @@
                     </div>
                     {% endfor %}
                 </div>
-                {# <div class="ui large center aligned header">No Questions Asked</div> #}
+                {% endif %}
             </div>
             <div class="ui bottom attached inverted tabular menu">
                 <a class="item" data-tab="activity">Activity</a>
