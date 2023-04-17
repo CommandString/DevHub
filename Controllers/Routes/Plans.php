@@ -9,6 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Tnapf\Router\Interfaces\RequestHandlerInterface;
 
+use function Common\createOgTags;
 use function Common\render;
 
 class Plans implements RequestHandlerInterface
@@ -62,7 +63,8 @@ class Plans implements RequestHandlerInterface
         );
 
         $plans = compact("free", "boosted", "pro");
+        $og = createOgTags("Plans", "/plans", "Upgrade your coding game with Developer Hub plans! Choose the plan that fits your needs and take your coding skills to the next level!");
 
-        return render("plans", compact("plans"));
+        return render("plans", compact("plans", "og"));
     }
 }
