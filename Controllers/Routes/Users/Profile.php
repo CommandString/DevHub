@@ -10,6 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Tnapf\Router\Interfaces\RequestHandlerInterface;
 
+use function Common\createOgTags;
 use function Common\render;
 
 class Profile implements RequestHandlerInterface
@@ -24,7 +25,8 @@ class Profile implements RequestHandlerInterface
         $user = $args->user;
 
         $questions = $user->fetchQuestions();
+        $og = createOgTags("{$user->getUsername()}'s profile", "/users/{$user->getId()}", "");
 
-        return render("users.profile", compact("user", "questions"));
+        return render("users.profile", compact("user", "questions", "og"));
     }
 }
