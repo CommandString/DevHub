@@ -4,6 +4,7 @@ namespace Controllers\Routes\Comments\Post;
 
 use Carbon\Carbon;
 use CommandString\Utils\ArrayUtils;
+use Common\Database\Activity;
 use Common\Database\Comment;
 use Common\Database\Question;
 use Common\Database\User;
@@ -42,13 +43,21 @@ class Create implements RequestHandlerInterface
         $success = empty($errors);
 
         if ($success) {
-            $comment = new Comment;
-
-            $comment
+            $comment = (new Comment)
                 ->setQuestion($question)
                 ->setDescription($description)
                 ->setPoster($user)
                 ->setPosted(new Carbon)
+                ->commit()
+            ;
+
+            (new Activity)
+                ->setType(Activity::CREATE_COMMENT)
+                ->setData([
+                    "question" => $question->getId(),
+                ])
+                ->setUser($user)
+                ->setDate(new Carbon)
                 ->commit()
             ;
         }
