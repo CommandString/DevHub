@@ -15,20 +15,22 @@ class IsLoggedIn extends TwigFunction
         return "isLoggedIn";
     }
 
-    public static function getMethod(): callable
-    {
-        return function (): bool {
-            if (!isset(self::$isLoggedIn)) {
-                try {
-                    env()->sessionController->get($_COOKIE['session_id'] ?? "");
-                } catch (SessionDoesNotExist) {
-                    $return = false;
-                }
-
-                self::$isLoggedIn = $return ?? true;
+    public static function method(): bool {
+        if (!isset(self::$isLoggedIn)) {
+            try {
+                env()->sessionController->get($_COOKIE['session_id'] ?? "");
+            } catch (SessionDoesNotExist) {
+                $return = false;
             }
 
-            return self::$isLoggedIn;
-        };
+            self::$isLoggedIn = $return ?? true;
+        }
+
+        return self::$isLoggedIn;
+    }
+
+    public static function getMethod(): callable
+    {
+        return fn(): bool => self::method();
     }
 }
