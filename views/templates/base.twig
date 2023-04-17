@@ -9,9 +9,8 @@
 
     <meta property="og:title" content="{{ og.title ?? 'Developer Hub' }}" />
     <meta property="og:url" content="https://hub.cmdstr.dev{{ og.uri ?? '' }}" />
-    <meta property="og:image" content="{{ og.logo ?? 'https://hub.cmdstr.dev/img/logo.png' }}" />
-    <meta property="og:description"
-        content="{{ og.description ?? 'Your ultimate resource for coding expertise. Join a thriving community of developers and get instant answers to your questions.' }}">
+    <meta property="og:image" content="{{ og.image ?? 'https://hub.cmdstr.dev/img/logo.png' }}" />
+    <meta property="og:description" content="{{ og.description ?? 'Your ultimate resource for coding expertise. Join a thriving community of developers and get instant answers to your questions.' }}">
 
 {% block head %}{% endblock %}
 </head>
