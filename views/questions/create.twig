@@ -1,0 +1,44 @@
+{% extends "templates/base.twig" %}
+
+{% block head %}
+{{ entrypoint('questionCreate')|raw }}
+<title>Developer Hub</title>
+{% endblock %}
+
+{% block body %}
+<div class="ui inverted attached segment" id="main">
+    <div class="ui container">
+        <div class="ui massive inverted header">Create a question <div class="sub header">Ask the community for help
+                and get answers to your coding questions</div>
+        </div>
+        <form class="ui inverted {{ errors is empty ? '' : 'error' }} form" method="POST">
+            <div class="field">
+                <label for="title">Title</label>
+                <input type="text" name="title" value="{{ title ?? '' }}" placeholder="Title">
+            </div>
+            <div class="field">
+                <label for="description">Description</label>
+                <textarea name="description" placeholder="Description">{{ description ?? '' }}</textarea>
+            </div>
+            <div class="field">
+                <label for="tags">Tags</label>
+                <input type="text" name="tags" value="{{ tags ?? '' }}" placeholder="Tags separated by commas">
+            </div>
+            <button class="ui fluid large violet button">Create</button>
+            <a href="/questions">
+                <div class="ui fluid large red button">Cancel</div>
+            </a>
+            {% if errors is empty == false %}
+            <div class="ui large inverted error message">
+                <div class="header">There were some errors with your question</div>
+                <ul class="list">
+                    {% for error in errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}

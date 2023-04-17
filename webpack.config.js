@@ -4,7 +4,7 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
-const ENTRIES = ["home", "base", "404", "login", "register", "profile", "question", "questions"];
+const ENTRIES = ["home", "base", "404", "login", "register", "profile", "question", "questions", "questionCreate"];
 
 Encore
     .setOutputPath('public/assets/')

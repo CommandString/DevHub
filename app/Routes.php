@@ -28,3 +28,9 @@ Router::get("/questions/search/{query}", Controllers\Routes\Questions\Get\Query:
     ->setParameter("query", "[a-zA-Z0-9]*")
 ;
 Router::post("/newsletter/signup", Controllers\Routes\Newsletter\Signup::class);
+Router::get("/questions/create", Controllers\Routes\Questions\Get\Create::class)
+    ->addMiddleware(Controllers\Middleware\LoggedIn::class)
+;
+Router::post("/questions/create", Controllers\Routes\Questions\Post\Create::class)
+    ->addMiddleware(Controllers\Middleware\LoggedIn::class)
+;
