@@ -52,3 +52,12 @@ function getMimeFromExtension(string $extensionToFindMimeFor): ?string
 
     return null;
 }
+
+function createOgTags(
+    ?string $title = null,
+    ?string $uri = null,
+    ?string $description = null,
+    ?string $image = null
+): array {
+    return compact("title", "uri", "description", "image");
+}
