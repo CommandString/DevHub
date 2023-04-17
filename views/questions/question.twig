@@ -28,6 +28,7 @@
         </div>
         <div class="ui divider"></div>
         {{ render("questions.comment", {comment: question, showPosted: false})|raw }}
+        {% if isLoggedIn() %}
         <div class="ui divider"></div>
         <div class="add comment">
             <div class="ui inverted header">
@@ -37,9 +38,11 @@
                 <div class="field">
                     <textarea name="description" placeholder="Add a comment..."></textarea>
                 </div>
-                <button class="ui violet fluid button" type="submit"><i class="comment alternate icon"></i> Post Comment</button>
+                <button class="ui violet fluid button" type="submit"><i class="comment alternate icon"></i> Post
+                    Comment</button>
             </div>
         </div>
+        {% endif %}
         {% for comment in question.fetchComments() %}
         <div class="ui divider"></div>
         {{ render("questions.comment", {comment: comment})|raw }}
