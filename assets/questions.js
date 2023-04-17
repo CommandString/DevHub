@@ -2,7 +2,6 @@ import "./base"
 import "./styles/questions.scss"
 
 let searching = 0
-let empty = true
 let search = async function () {
     let query = $("#search input").val()
     let sId = ++searching
@@ -18,8 +17,6 @@ let search = async function () {
         return
     }
 
-    empty = query.length === 0
-
     $("#questions").html(questions.join(""))
 
     if (dimmer.hasClass("active")) {
@@ -29,7 +26,7 @@ let search = async function () {
 
 $("#search i.icon").click(search)
 $("#search input").keyup(function (e) {
-    if (e.keyCode === 13 || ($("#search input").val().length === 0 && !empty)) {
+    if (e.keyCode === 13) {
         search()
     }
 })
