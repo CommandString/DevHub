@@ -25,7 +25,7 @@ class Downvote implements RequestHandlerInterface
         /** @var User */
         $user = $args->user;
 
-        if ($question->hasUserAlreadyDownVoted($user)) {
+        if ($question->hasAlreadyVoted($user)) {
             return $response->withStatus(400);
         }
 

@@ -25,7 +25,7 @@ class Upvote implements RequestHandlerInterface
         /** @var User */
         $user = $args->user;
 
-        if ($question->hasUserAlreadyUpVoted($user)) {
+        if ($question->hasAlreadyVoted($user)) {
             return $response->withStatus(400);
         }
 

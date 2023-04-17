@@ -285,6 +285,9 @@ class User implements JsonSerializable
         return $that;
     }
 
+    /**
+     * @return Activity[]
+     */
     public function fetchActivities(): array
     {
         $stmt = driver()->prepare('SELECT * FROM activities WHERE user_id = :user_id');

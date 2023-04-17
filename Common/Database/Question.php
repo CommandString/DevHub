@@ -350,7 +350,7 @@ class Question implements JsonSerializable
         $activities = $user->fetchActivities();
 
         foreach ($activities as $activity) {
-            if ($activity->getData()['question'] ?? null === $this->id && $activity->getType() === Activity::UPVOTE_QUESTION) {
+            if ($activity->fetchQuestion()->getId() === $this->id && $activity->getType() === Activity::UPVOTE_QUESTION) {
                 return true;
             }
         }
@@ -363,11 +363,16 @@ class Question implements JsonSerializable
         $activities = $user->fetchActivities();
 
         foreach ($activities as $activity) {
-            if ($activity->getData()['question'] ?? null === $this->id && $activity->getType() === Activity::DOWNVOTE_QUESTION) {
+            if ($activity->fetchQuestion()->getId() === $this->id && $activity->getType() === Activity::DOWNVOTE_QUESTION) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    public function hasAlreadyVoted(User $user): bool
+    {
+        return $this->hasUserAlreadyUpVoted($user) || $this->hasUserAlreadyDownVoted($user);
     }
 }
