@@ -11,7 +11,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Tnapf\Router\Interfaces\RequestHandlerInterface;
 
-class Upvote implements RequestHandlerInterface
+class Downvote implements RequestHandlerInterface
 {
     public static function handle(
         ServerRequestInterface $request,
