@@ -25,6 +25,7 @@
 * [`/public/img/logo.png`](https://github.com/CommandString/DevHub/blob/master/public/img/logo.png) was created by me and is licensed under [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
 ## What still needs to be added
-* Ability to post/edit/delete questions/comments
-* Ability to modify your profile
+* Ability to customize profile
+* Questions shown on homepage instead of registration when logged in
+* Ability to comment on questions
 * Ability to reset password
