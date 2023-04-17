@@ -47,15 +47,20 @@
         }
     }
 
-    @media screen and (min-width: 595px) {
+    $width: 745px;
+    @media screen and (min-width: $width) {
         #nav-questions {
             display: none;
         }
     }
 
-    @media screen and (max-width: 595px) {
+    @media screen and (max-width: $width) {
         #nav-search {
             display: none;
+        }
+
+        div.logo.item {
+            margin-right: 10px !important;
         }
     }
 }
