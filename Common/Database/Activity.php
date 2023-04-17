@@ -13,10 +13,10 @@ class Activity
 {
     public const CHANGE_USERNAME = 1;
     public const CHANGE_PROFILE_PICTURE = 2;
-    public const UPVOTE_POST = 3;
-    public const DOWNVOTE_POST = 4;
-    public const ANSWER_POST = 5;
-    public const CREATE_POST = 6;
+    public const UPVOTE_QUESTION = 3;
+    public const DOWNVOTE_QUESTION = 4;
+    public const ANSWER_QUESTION = 5;
+    public const CREATE_QUESTION = 6;
     public const CREATE_COMMENT = 7;
 
     private int $id;
@@ -30,6 +30,39 @@ class Activity
         return $this->id;
     }
 
+    public function getTitle(): string
+    {
+        return match($this->type) {
+            self::CHANGE_USERNAME => "Changed username",
+            self::CHANGE_PROFILE_PICTURE => "Changed profile picture",
+            self::UPVOTE_QUESTION => "Upvoted a question",
+            self::DOWNVOTE_QUESTION => "Downvoted a question",
+            self::ANSWER_QUESTION => "Answered a question",
+            self::CREATE_QUESTION => "Created a question",
+            self::CREATE_COMMENT => "Created a comment",
+            default => "Unknown activity"
+        };
+    }
+
+    public function getDescription(): string
+    {
+        return match($this->type) {
+            self::CHANGE_USERNAME => "Changed username from {$this->data['old']} to {$this->data['new']}",
+            self::CHANGE_PROFILE_PICTURE => "",
+            self::UPVOTE_QUESTION => "Upvoted question <a class='custom-link' href='/questions/{$this->data['question']}'>{$this->fetchQuestion()->getTitle()}</a>",
+            self::DOWNVOTE_QUESTION => "Downvoted question <a class='custom-link' href='/questions/{$this->data['question']}'>{$this->fetchQuestion()->getTitle()}</a>",
+            self::ANSWER_QUESTION => "Answered question <a class='custom-link' href='/questions/{$this->data['question']}'>{$this->fetchQuestion()->getTitle()}</a>",
+            self::CREATE_QUESTION => "Created question <a class='custom-link' href='/questions/{$this->data['question']}'>{$this->fetchQuestion()->getTitle()}</a>",
+            self::CREATE_COMMENT => "Created comment on question <a class='custom-link' href='/questions/{$this->data['question']}'>{$this->fetchQuestion()->getTitle()}</a>",
+            default => "Unknown activity"
+        };
+    }
+
+    public function fetchQuestion(): ?Question
+    {
+        return Question::fetchById($this->data['question'] ?? 0);
+    }
+
     public function getUser(): User
     {
         return $this->user;
@@ -40,7 +73,7 @@ class Activity
         return $this->type;
     }
 
-    public function getDate(): string
+    public function getDate(): Carbon
     {
         return $this->date;
     }
