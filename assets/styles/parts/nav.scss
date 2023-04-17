@@ -48,12 +48,6 @@
     }
 
     $width: 745px;
-    @media screen and (min-width: $width) {
-        #nav-questions {
-            display: none;
-        }
-    }
-
     @media screen and (max-width: $width) {
         #nav-search {
             display: none;
