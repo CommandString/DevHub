@@ -23,7 +23,7 @@ class Activity
     private User $user;
     private int $type;
     private Carbon $date;
-    private stdClass $data;
+    private array $data;
 
     public function getId(): int
     {
@@ -45,7 +45,7 @@ class Activity
         return $this->date;
     }
 
-    public function getData(): stdClass
+    public function getData(): array
     {
         return $this->data;
     }
@@ -68,7 +68,7 @@ class Activity
         return $this;
     }
 
-    public function setData(stdClass $data): self
+    public function setData(array $data): self
     {
         $this->data = $data;
         return $this;
