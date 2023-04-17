@@ -3,10 +3,10 @@
 namespace Common\Database;
 
 use Carbon\Carbon;
-use CommandString\Utils\GeneratorUtils;
 use Common\Database\User;
 
 use function Common\driver;
+use function Common\generateId;
 
 class Comment
 {
@@ -123,7 +123,7 @@ class Comment
         ;
 
         if (!isset($this->id)) {
-            $this->id = (int) GeneratorUtils::uuid(16, range(1, 9));
+            $this->id = generateId();
         }
 
         $stmt = driver()->prepare($query);

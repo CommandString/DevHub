@@ -3,11 +3,11 @@
 namespace Common\Database;
 
 use Carbon\Carbon;
-use CommandString\Utils\GeneratorUtils;
 use JsonSerializable;
 use PDO;
 
 use function Common\driver;
+use function Common\generateId;
 
 class User implements JsonSerializable
 {
@@ -175,7 +175,7 @@ class User implements JsonSerializable
         $stmt = driver()->prepare($query);
 
         if (!isset($this->id)) {
-            $this->id = (int) GeneratorUtils::uuid(16, range(1, 9));
+            $this->id = generateId();
         }
 
         return $stmt->execute([

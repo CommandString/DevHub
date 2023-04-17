@@ -3,14 +3,13 @@
 namespace Common\Database;
 
 use Carbon\Carbon;
-use CommandString\Utils\GeneratorUtils;
 use Common\Database\File;
 use Common\Database\User;
 use JsonSerializable;
 use PDO;
-use PHP_CodeSniffer\Generators\Generator;
 
 use function Common\driver;
+use function Common\generateId;
 
 class Question implements JsonSerializable
 {
@@ -263,7 +262,7 @@ class Question implements JsonSerializable
         $stmt = driver()->prepare($query);
 
         if (!isset($this->id)) {
-            $this->id = (int) GeneratorUtils::uuid(16, range(1, 9));
+            $this->id = generateId();
         }
 
         return $stmt->execute([

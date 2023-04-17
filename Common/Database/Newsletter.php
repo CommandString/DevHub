@@ -2,9 +2,8 @@
 
 namespace Common\Database;
 
-use CommandString\Utils\GeneratorUtils;
-
 use function Common\driver;
+use function Common\generateId;
 
 class Newsletter {
     private string $email;
@@ -55,7 +54,7 @@ class Newsletter {
         $stmt = driver()->prepare($query);
 
         if (!isset($this->id)) {
-            $this->id = (int) GeneratorUtils::uuid(16, range(1, 9));
+            $this->id = generateId();
         }
 
         return $stmt->execute([

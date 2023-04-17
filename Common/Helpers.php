@@ -3,6 +3,7 @@
 namespace Common;
 
 use CommandString\Utils\ArrayUtils;
+use CommandString\Utils\GeneratorUtils;
 use Common\Configuration\Env;
 use HttpSoft\Response\HtmlResponse;
 use Tnapf\Pdo\Driver;
@@ -60,4 +61,9 @@ function createOgTags(
     ?string $image = null
 ): array {
     return compact("title", "uri", "description", "image");
+}
+
+function generateId(): int
+{
+    return (int)GeneratorUtils::uuid(16, range(1, 9));
 }

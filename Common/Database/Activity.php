@@ -3,11 +3,10 @@
 namespace Common\Database;
 
 use Carbon\Carbon;
-use CommandString\Utils\GeneratorUtils;
 use PDO;
-use stdClass;
 
 use function Common\driver;
+use function Common\generateId;
 
 class Activity
 {
@@ -117,7 +116,7 @@ class Activity
         $stmt = driver()->prepare($query);
 
         if (!isset($this->id)) {
-            $this->id = (int)GeneratorUtils::uuid(16, range(1, 9));
+            $this->id = generateId();
         }
 
         return $stmt->execute([
