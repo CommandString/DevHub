@@ -310,7 +310,11 @@ class User implements JsonSerializable
         return $this->activities;
     }
 
-    public function fetchQuestions()
+
+    /**
+     * @return Question[]
+     */
+    public function fetchQuestions(): array
     {
         $stmt = driver()->prepare('SELECT * FROM questions WHERE poster = :poster');
         $stmt->execute(['poster' => $this->id]);
