@@ -88,7 +88,7 @@ class Create implements RequestHandlerInterface
             $question->commit();
 
             $activity = new Activity;
-            $activity->setType(Activity::CREATE_POST);
+            $activity->setType(Activity::CREATE_QUESTION);
             $activity->setUser($poster);
             $activity->setData(["question" => $question->getId()]);
             $activity->setDate(new Carbon());
