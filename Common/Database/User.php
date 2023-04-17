@@ -285,26 +285,26 @@ class User implements JsonSerializable
         return $that;
     }
 
-    public function fetchActivities()
+    public function fetchActivities(): array
     {
         $stmt = driver()->prepare('SELECT * FROM activities WHERE user_id = :user_id');
         $stmt->execute(['user_id' => $this->id]);
 
-        if ($stmt->rowCount() === 0) {
-            return null;
+        if ($stmt->rowCount() > 0) {
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($rows as $row) {
+                $this->activities[] = Activity::createFromDatabase(
+                    $row['id'],
+                    $this,
+                    $row['type'],
+                    (new Carbon())->setTimestamp($row['date']),
+                    $row['data']
+                );
+            }
         }
 
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($rows as $row) {
-            $this->activities[] = Activity::createFromDatabase(
-                $row['id'],
-                $row['user_id'],
-                $row['type'],
-                $row['date'],
-                $row['data']
-            );
-        }
+        return $this->activities;
     }
 
     public function fetchQuestions()
