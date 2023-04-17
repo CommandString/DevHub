@@ -16,21 +16,23 @@ class GetCurrentUser extends TwigFunction
         return "getCurrentUser";
     }
 
-    public static function getMethod(): callable
-    {
-        return function (): ?User {
-            if (!isset(self::$user)) {
-                try {
-                    $session = env()->sessionController->get($_COOKIE['session_id'] ?? "");
-                    $user = User::fetchById($session->get("user_id"));
-                } catch (SessionDoesNotExist) {
-                    return null;
-                }
-
-                self::$user = $user;
+    public static function method(): ?User {
+        if (!isset(self::$user)) {
+            try {
+                $session = env()->sessionController->get($_COOKIE['session_id'] ?? "");
+                $user = User::fetchById($session->get("user_id"));
+            } catch (SessionDoesNotExist) {
+                return null;
             }
 
-            return self::$user;
-        };
+            self::$user = $user;
+        }
+
+        return self::$user;
+    }
+
+    public static function getMethod(): callable
+    {
+        return fn(): ?User => self::method();
     }
 }
