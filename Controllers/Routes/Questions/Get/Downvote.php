@@ -39,7 +39,7 @@ class Downvote implements RequestHandlerInterface
             ->commit()
         ;
 
-        $question->upvote()->commit();
+        $question->downVote()->commit();
 
         return $response->withStatus(200);
     }
