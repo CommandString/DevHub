@@ -15,3 +15,27 @@ $("#nav-search input").on("keydown", function (e) {
 $("#nav-search i.icon").on("click", function () {
     window.location.href = `/questions?q=${$("#nav-search input").val()}`;
 })
+
+$(".footer.segment button").click(function () {
+    let email = $(".footer.segment input").val();
+
+    console.log(email);
+
+    $.post("/newsletter/signup", { email: email }, function (data) {
+        console.log(data)
+
+        if (data.success) {
+            $.toast({
+                title: "Successfully signed up!",
+                message: "You have successfully signed up for our newsletter!",
+                class: "success"
+            })
+        } else {
+            $.toast({
+                title: "Failed to sign up!",
+                message: data.errors.join(", "),
+                class: "error"
+            })
+        }
+    });
+});

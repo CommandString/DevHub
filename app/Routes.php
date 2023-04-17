@@ -19,7 +19,6 @@ Router::group("/users/{id}", function () {
         ->addMiddleware(Controllers\Middleware\ValidUserId::class)
     ;
 });
-
 Router::get("/questions/{id}", Controllers\Routes\Questions\Get\Question::class)
     ->setParameter("id", "[0-9]{16}")
     ->addMiddleware(Controllers\Middleware\ValidQuestionId::class)
@@ -28,3 +27,4 @@ Router::get("/questions", Controllers\Routes\Questions\Get\Questions::class);
 Router::get("/questions/search/{query}", Controllers\Routes\Questions\Get\Query::class)
     ->setParameter("query", "[a-zA-Z0-9]*")
 ;
+Router::post("/newsletter/signup", Controllers\Routes\Newsletter\Signup::class);
