@@ -49,5 +49,10 @@ Router::get("/questions/{id}/downvote", Controllers\Routes\Questions\Get\Downvot
     ->addMiddleware(Controllers\Middleware\LoggedIn::class)
     ->addMiddleware(Controllers\Middleware\ValidQuestionId::class)
 ;
+Router::post("/questions/{id}/comments", Controllers\Routes\Comments\Post\Create::class)
+    ->setParameter("id", "[0-9]{16}")
+    ->addMiddleware(Controllers\Middleware\LoggedIn::class)
+    ->addMiddleware(Controllers\Middleware\ValidQuestionId::class)
+;
 
 Router::catch(HttpNotFound::class, Controllers\Catchers\NotFound::class);

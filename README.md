@@ -27,5 +27,5 @@
 ## What still needs to be added
 * Ability to customize profile
 * Questions shown on homepage instead of registration when logged in
-* Ability to comment on questions
 * Ability to reset password
+* Upvote / Downvote comments

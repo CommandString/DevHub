@@ -36,9 +36,9 @@
             </div>
             <div class="ui form">
                 <div class="field">
-                    <textarea name="description" placeholder="Add a comment..."></textarea>
+                    <textarea name="comment" placeholder="Add a comment..."></textarea>
                 </div>
-                <button class="ui violet fluid button" type="submit"><i class="comment alternate icon"></i> Post
+                <button comment-id="{{ question.id }}" class="ui violet fluid button" id="submit-comment"><i class="comment alternate icon"></i> Post
                     Comment</button>
             </div>
         </div>

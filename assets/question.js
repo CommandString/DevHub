@@ -1,9 +1,6 @@
 import "./base"
 import "./styles/question.scss"
 
-// create a get request to /question/{id}/upvote when the user clicks .vote > i.up.arrow.icon and increment .vote > i.up.arrow.icon + span by 1
-// create a get request to /question/{id}/downvote when the user clicks .vote > i.down.arrow.icon and decrement .vote > i.down.arrow.icon + span by 1
-
 $(".vote > i.up.arrow.icon").click(function() {
     fetch("/questions/" + $(this).attr("comment-id") + "/upvote", {
         method: "GET",
@@ -21,5 +18,29 @@ $(".vote > i.down.arrow.icon").click(function() {
         if (response.ok) {
             $(this).prev().text(parseInt($(this).prev().text()) - 1);
         }
+    });
+});
+
+$("#submit-comment").click(function() {
+    // use jquery get for the request and use a FormData object to send the data
+    var formData = new FormData();
+    formData.append("comment", $("textarea").val());
+
+    fetch("/questions/" + $(this).attr("comment-id") + "/comments", {
+        method: "POST",
+        body: formData,
+    }).then(async (response) => {
+        let body = await response.json();
+
+        if (body.success) {
+            location.reload();
+            return;
+        }
+
+        $.toast({
+            title: "Failed to post comment",
+            message: body.errors.join(", "),
+            class: 'error'
+        });
     });
 });

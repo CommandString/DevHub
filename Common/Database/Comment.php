@@ -15,9 +15,9 @@ class Comment
     private string $description;
     private Carbon $posted;
     private Question $question;
-    private bool $isAnswer;
-    private int $upVotes;
-    private int $downVotes;
+    private bool $isAnswer = false;
+    private int $upVotes = 0;
+    private int $downVotes = 0;
 
     /** @var File[] */
     private array $files;
