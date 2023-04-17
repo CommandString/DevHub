@@ -296,6 +296,7 @@ class User implements JsonSerializable
         if ($stmt->rowCount() > 0) {
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            $this->activities = [];
             foreach ($rows as $row) {
                 $this->activities[] = Activity::createFromDatabase(
                     $row['id'],
