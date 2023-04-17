@@ -30,10 +30,19 @@
             <div class="ui top attached inverted tabular menu">
                 <a class="item" data-tab="activity">Activity</a>
                 <a class="item" data-tab="questions">Questions</a>
-                {# <a class="item" data-tab="answers">Answers</a> #}
             </div>
             <div class="ui inverted attached tab segment" data-tab="activity">
                 <div class="ui inverted relaxed divided list">
+                    {% for activity in user.activities %}
+                        <div class="item">
+                            <div class="content">
+                                <div class="header">{{ activity.title }}</div>
+                                {{ activity.description|raw }} <u data-tooltip="{{ activity.date.format('n/j/Y g:i:s A') }} (UTC)">{{
+                                    activity.date.since() }}</u>
+                            </div>
+                        </div>
+                    {% endfor %}
+
                     <div class="item">
                         <div class="content">
                             <div class="header">Joined Developer Hub</div>
@@ -81,11 +90,7 @@
             <div class="ui bottom attached inverted tabular menu">
                 <a class="item" data-tab="activity">Activity</a>
                 <a class="item" data-tab="questions">Questions</a>
-                {# <a class="item" data-tab="answers">Answers</a> #}
             </div>
-            {# <div class="ui inverted bottom attached tab segment active" data-tab="answers">
-                Answers
-            </div> #}
         </div>
     </div>
 </div>

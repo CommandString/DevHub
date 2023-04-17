@@ -1,3 +1,5 @@
+@import "./colors";
+
 #main {
     img {
         display: inline-block !important;
@@ -30,6 +32,15 @@
             overflow: hidden;
             line-height: 25px;
             width: inherit;
+        }
+    }
+
+    .ui.inverted.list .item a:not(.ui) {
+        color: darken($secondary, 20) !important;
+        transition: 0.2s !important;
+
+        &:hover {
+            color: $secondary !important;
         }
     }
 }

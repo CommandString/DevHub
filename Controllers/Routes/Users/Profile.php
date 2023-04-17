@@ -24,6 +24,7 @@ class Profile implements RequestHandlerInterface
     ): ResponseInterface {
         /** @var User */
         $user = $args->user;
+        $user->fetchActivities();
 
         $questions = $user->fetchQuestions();
         $og = createOgTags("{$user->getUsername()}'s profile", "/users/{$user->getId()}", "");
