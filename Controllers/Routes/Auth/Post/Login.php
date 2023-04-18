@@ -65,7 +65,7 @@ class Login implements RequestHandlerInterface
         $session = $controller->create();
         $session->set("user_id", $user->getId());
         $res = new RedirectResponse("/users/{$user->getId()}");
-        $res = $res->withHeader("Set-Cookie", $session->setCookieHeader($session));
+        $res = $res->withHeader("Set-Cookie", $session->setCookieHeader(httponly: true));
         return $res;
     }
 }
