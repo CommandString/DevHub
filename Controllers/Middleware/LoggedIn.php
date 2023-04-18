@@ -8,7 +8,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Tnapf\Router\Interfaces\RequestHandlerInterface;
 use Twig\Functions\GetCurrentUser;
-use Twig\Functions\IsLoggedIn;
 
 class LoggedIn implements RequestHandlerInterface
 {
