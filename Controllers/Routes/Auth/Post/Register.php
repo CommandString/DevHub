@@ -62,6 +62,10 @@ class Register implements RequestHandlerInterface
                 $errors[] = "Password must be at least 6 characters";
             }
 
+            if (strlen($password) > 32) {
+                $errors[] = "Password must be less than 32 characters";
+            }
+
             if (strlen($username) < 3) {
                 $errors[] = "Username must be at least 3 characters";
             }
