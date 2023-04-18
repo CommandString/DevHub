@@ -17,13 +17,11 @@ class LoggedIn implements RequestHandlerInterface
         stdClass $args,
         callable $next
     ): ResponseInterface {
-        $user = GetCurrentUser::method();
+        $args->user = GetCurrentUser::method();
 
-        if ($user === null) {
+        if ($args->user === null) {
             return new RedirectResponse("/login");
         }
-
-        $args->user = $user;
 
         return $next($request, $response, $args);
     }
