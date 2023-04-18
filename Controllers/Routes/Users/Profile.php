@@ -28,7 +28,7 @@ class Profile implements RequestHandlerInterface
 
         $questions = $user->fetchQuestions();
         $og = createOgTags("{$user->getUsername()}'s profile", "/users/{$user->getId()}", "");
-        $isCurrentUser = GetCurrentUser::method()->getId() === $user->getId();
+        $isCurrentUser = GetCurrentUser::method()?->getId() === $user->getId();
 
         return render("users.profile", compact("user", "questions", "og", "isCurrentUser"));
     }
