@@ -1,9 +1,7 @@
 <?php
 
-namespace Controllers\Routes\Users;
+namespace Controllers\Routes\Users\Get;
 
-use Carbon\Carbon;
-use Common\Database\Question;
 use Common\Database\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
