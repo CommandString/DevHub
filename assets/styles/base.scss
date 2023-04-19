@@ -32,3 +32,21 @@ muted {
 #main {
     min-height: 90vh !important;
 }
+
+.ui.modal {
+    &,
+    &>.header,
+    &>.content,
+    &>.actions {
+        color: white;
+        background: linear-gradient(#00000080, #00000080), linear-gradient(135deg, $primary, $secondary) !important;
+
+        label {
+            color: white !important;
+        }
+    }
+
+    .dimmer {
+        border-radius: 0 !important;
+    }
+}
