@@ -94,8 +94,9 @@ class User implements JsonSerializable
             'id' => $this->id,
             'username' => $this->username,
             'email' => $this->email,
-            'fname' => $this->fname,
-            'lname' => $this->lname,
+            'first_name' => $this->fname,
+            'last_name' => $this->lname,
+            'full_name' => "{$this->fname} {$this->lname}",
             'registered' => $this->registered->getTimestamp(),
             'plan' => $this->plan,
         ];
