@@ -19,11 +19,41 @@ Router::get("/plans", Controllers\Routes\Plans::class);
 Router::post("/newsletter/signup", Controllers\Routes\Newsletter\Signup::class);
 
 Router::group("/users/{id}", function () {
-    Router::get("/", Controllers\Routes\Users\Profile::class)
+    Router::get("/", Controllers\Routes\Users\Get\Profile::class)
         ->setParameter("id", "[0-9]{16}")
         ->addMiddleware(Controllers\Middleware\ValidUserId::class)
     ;
+
+    Router::post("/username", Controllers\Routes\Users\Post\Username::class)
+        ->setParameter("id", "[0-9]{16}")
+        ->addMiddleware(Controllers\Middleware\ValidUserId::class)
+        ->addMiddleware(Controllers\Middleware\CurrentUser::class)
+    ;
+
+    Router::post("/email", Controllers\Routes\Users\Post\Email::class)
+        ->setParameter("id", "[0-9]{16}")
+        ->addMiddleware(Controllers\Middleware\ValidUserId::class)
+        ->addMiddleware(Controllers\Middleware\CurrentUser::class)
+    ;
+
+    Router::post("/password", Controllers\Routes\Users\Post\Password::class)
+        ->setParameter("id", "[0-9]{16}")
+        ->addMiddleware(Controllers\Middleware\ValidUserId::class)
+        ->addMiddleware(Controllers\Middleware\CurrentUser::class)
+    ;
+
+    Router::post("/name", Controllers\Routes\Users\Post\Name::class)
+        ->setParameter("id", "[0-9]{16}")
+        ->addMiddleware(Controllers\Middleware\ValidUserId::class)
+        ->addMiddleware(Controllers\Middleware\CurrentUser::class)
+    ;
 });
+
+
+Router::get("/api/users/{id}", Controllers\Routes\Users\Get\Json::class)
+    ->setParameter("id", "[0-9]{16}")
+    ->addMiddleware(Controllers\Middleware\ValidUserId::class)
+;
 
 Router::get("/questions/{id}", Controllers\Routes\Questions\Get\Question::class)
     ->setParameter("id", "[0-9]{16}")
