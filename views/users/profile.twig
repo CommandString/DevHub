@@ -7,21 +7,24 @@
 
 {% block body %}
 <div id="main" class="ui inverted attached segment">
-    <div class="ui container">
+    <div class="ui {{ isCurrentUser ? 'editable' : '' }} container">
         <div>
-            <img src="/img/logo.png" class="ui small image" alt="Profile Picture">
+            <img property="pfp" src="/img/logo.png" class="ui small image" alt="Profile Picture">
             <div>
-                <span class="ui big text">{{ user.username }}</span>
+                <span property="username" class="ui big text">{{ user.username }}</span>
                 <p>
-                    <i class="user icon"></i> {{ user.fname }} {{ user.lname }}<br>
+                    <i class="user icon"></i> <span property="name">{{ user.fname }} {{ user.lname }}</span><br>
                     <i class="birthday cake icon"></i> Joined <u
                         data-tooltip="{{ user.getRegistered('n/j/Y g:i:s A') }} (UTC)">{{
                         user.registered.since() }}</u><br>
-                    <i class="mail icon"></i> {{ user.email }}<br>
+                    <i class="mail icon"></i> <span property="email">{{ user.email }}</span><br>
+                    {% if isCurrentUser %}
+                    <i class="lock icon"></i> <span property="password">Reset Password</span><br>
+                    {% endif %}
                     <span class="ui green text"><i class="up arrow icon"></i>{{ user.getTotalUpVotes() }}</span>
                     <span class="ui red text"><i class="down arrow icon"></i>{{ user.getTotalDownVotes() }}</span>
                     <span class="ui blue text"><i class="ui question mark icon"></i>{{ user.getTotalQuestionsAsked()
-                        }}</span><br>
+                        }}</span>
                 </p>
             </div>
             <br>
@@ -34,15 +37,15 @@
             <div class="ui inverted attached tab segment" data-tab="activity">
                 <div class="ui inverted relaxed divided list">
                     {% for activity in user.activities %}
-                        <div class="item">
-                            <div class="content">
-                                <div class="header">{{ activity.title }}</div>
-                                {{ activity.description|raw }} <u data-tooltip="{{ activity.date.format('n/j/Y g:i:s A') }} (UTC)">{{
-                                    activity.date.since() }}</u>
-                            </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">{{ activity.title }}</div>
+                            {{ activity.description|raw }} <u
+                                data-tooltip="{{ activity.date.format('n/j/Y g:i:s A') }} (UTC)">{{
+                                activity.date.since() }}</u>
                         </div>
+                    </div>
                     {% endfor %}
-
                     <div class="item">
                         <div class="content">
                             <div class="header">Joined Developer Hub</div>
@@ -53,7 +56,8 @@
                     </div>
                 </div>
             </div>
-            <div class="ui inverted attached tab {{ questions is empty ? '' : 'not-empty' }} segment" data-tab="questions">
+            <div class="ui inverted attached tab {{ questions is empty ? '' : 'not-empty' }} segment"
+                data-tab="questions">
                 {% if questions is empty %}
                 <div class="ui large center aligned header">No Questions Asked</div>
                 {% else %}
