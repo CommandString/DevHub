@@ -7,36 +7,38 @@
 
 {% block body %}
 <div id="main" class="ui attached inverted segment">
-    <div class="ui massive inverted dividing header">Login</div>
-    <form method="POST" class="ui large form">
-        <div class="field">
-            <input type="text" name="email" value="{{ (email != null) ? email : "" }}" placeholder="Email">
+    <div class="ui wide container">
+        <div class="ui massive inverted dividing header">Login</div>
+        <form method="POST" class="ui large form">
+            <div class="field">
+                <input type="text" name="email" value="{{ (email != null) ? email : "" }}" placeholder="Email">
+            </div>
+            <div class="field">
+                <input type="password" name="password" value="{{ (password != null) ? password : "" }}"
+                    placeholder="Password">
+            </div>
+            <button class="ui big fluid violet button">Login</button>
+        </form>
+        {% if errors ?? [] is empty %}
+        <div class="ui inverted centered large message">
+            <div class="header">
+                Don't have an account?
+            </div>
+            <p>You can register <a href="/register">here</a> and reach your <b><span class="ui purple text">full
+                        potential</span></b> today!
+            </p>
+        </div>{% else %}
+        <div class="ui inverted error large message">
+            <div class="header">
+                Please fix the following errors:
+            </div>
+            <ul class="centered list">
+                {% for error in errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
         </div>
-        <div class="field">
-            <input type="password" name="password" value="{{ (password != null) ? password : "" }}"
-                placeholder="Password">
-        </div>
-        <button class="ui big fluid violet button">Login</button>
-    </form>
-    {% if errors ?? [] is empty %}
-    <div class="ui inverted centered large message">
-        <div class="header">
-            Don't have an account?
-        </div>
-        <p>You can register <a href="/register">here</a> and reach your <b><span class="ui purple text">full
-                    potential</span></b> today!
-        </p>
-    </div>{% else %}
-    <div class="ui inverted error large message">
-        <div class="header">
-            Please fix the following errors:
-        </div>
-        <ul class="centered list">
-            {% for error in errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
+        {% endif %}
     </div>
-    {% endif %}
 </div>
 {% endblock %}
