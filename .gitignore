@@ -3,3 +3,5 @@ vendor/
 node_modules/
 public/assets
 !.env.example
+/tools/**/*
+!/tools/**/*.php
