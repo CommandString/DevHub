@@ -4,7 +4,9 @@ Your ultimate resource for coding expertise. Join a thriving community of develo
 # Setting up
 1. Clone the repository to your local machine using `git clone git@github.com/commandstring/devhub.git`
 2. `chmod +x prod && ./setup`
-3. `
+3. import `devhub.sql` into your MySQL database
+4. Setup `.env`
+5. If you have any questions or issues, please open an [issue](https://github.com/CommandString/DevHub/issues/new) on GitHub or contact me on [discord](https://discord.gg/TgrcSkuDtQ)
 
 # Programming Languages
 * PHP
