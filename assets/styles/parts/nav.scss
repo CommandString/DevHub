@@ -1,14 +1,12 @@
 @import "../colors";
 
 #navigation {
-    $padding: 100px;
-    padding: 0 $padding/2;
     margin: auto;
     background: linear-gradient(#00000080, #00000080), linear-gradient(135deg, $primary, $secondary);
     border-radius: unset !important;
 
-    > div.logo.item {
-        padding: 5px 0;
+    div.logo.item {
+        padding: 5px;
         cursor: pointer;
 
         > img {

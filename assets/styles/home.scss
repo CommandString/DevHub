@@ -2,26 +2,42 @@
 
 #hero {
     $trans: 0.2;
-    background-image: url("../img/coding3.jpg");
+    background: url("../img/coding3.jpg"), black;
     height: 750px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 75%;
 
-    >.header {
+    .header {
         position: absolute;
         bottom: 50px;
-        left: 50px;
         max-width: 400px;
 
         >span {
             font-weight: lighter;
         }
     }
+
+    @media screen and (max-width: 1000px) {
+        height: 600px;
+        background-position: top;
+    }
+
+    @media screen and (max-width: 1700px) {
+        background-size: 90%;
+    }
+
+    @media screen and (max-width: 1400px) {
+        background-size: 100%;
+    }
+
+    @media screen and (max-width: 850px) {
+        background-size: 120%;
+    }
 }
 
 #action-call {
-    padding: 100px 50px;
+    padding: 50px;
 
     .header {
         display: inline-block;
