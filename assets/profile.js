@@ -68,7 +68,6 @@ $.fn.modal.settings.templates.settingChange = function (title, inputs, onConfirm
                 let currentLength = $(this).val().length
                 let minLength = $(this).attr("minlength")
                 let field = $(this).parent()
-                let value = $(this).val().trim()
                 let error = ""
 
                 if (currentLength > maxLength) {
