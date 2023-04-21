@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers\Routes\Questions\Get;
+namespace Controllers\Routes\Questions\Post;
 
 use Carbon\Carbon;
 use Common\Database\Activity;

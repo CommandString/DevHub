@@ -3,7 +3,7 @@ import "./styles/question.scss"
 
 $(".vote > i.up.arrow.icon").click(function() {
     fetch("/questions/" + $(this).attr("comment-id") + "/upvote", {
-        method: "GET",
+        method: "POST",
     }).then((response) => {
         if (response.ok) {
             $(this).next().text(parseInt($(this).next().text()) + 1);
@@ -13,7 +13,7 @@ $(".vote > i.up.arrow.icon").click(function() {
 
 $(".vote > i.down.arrow.icon").click(function() {
     fetch("/questions/" + $(this).attr("comment-id") + "/downvote", {
-        method: "GET",
+        method: "POST",
     }).then((response) => {
         if (response.ok) {
             $(this).prev().text(parseInt($(this).prev().text()) - 1);
@@ -22,7 +22,6 @@ $(".vote > i.down.arrow.icon").click(function() {
 });
 
 $("#submit-comment").click(function() {
-    // use jquery get for the request and use a FormData object to send the data
     var formData = new FormData();
     formData.append("comment", $("textarea").val());
 
