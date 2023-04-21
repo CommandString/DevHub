@@ -9,8 +9,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
 use Tnapf\Router\Interfaces\RequestHandlerInterface;
 
-use function Common\render;
-
 class Name implements RequestHandlerInterface
 {
     public static function handle(
@@ -22,6 +20,7 @@ class Name implements RequestHandlerInterface
         $post = ArrayUtils::trimValues($request->getParsedBody());
         $required = ['fname', 'lname'];
         $missing = [];
+        $user = $args->user;
 
         foreach ($required as $key) {
             if (!isset($post[$key]) || empty($post[$key])) {
@@ -33,7 +32,7 @@ class Name implements RequestHandlerInterface
             $errors[] = "Please fill in the following fields: " . implode(', ', $missing);
         }
 
-        $checkName = function(string $toCheck, string $nameType) use (&$errors): void
+        $checkName = function(string $toCheck, string $nameType) use (&$errors, $user): void
         {
             if (!preg_match('/^[a-zA-Z]+$/', $toCheck)) {
                 $errors[] = "$nameType can only contain letters";
@@ -49,16 +48,18 @@ class Name implements RequestHandlerInterface
         };
 
         if (empty($errors)) {
-            $fname = $post['fname'];
-            $lname = $post['lname'];
+            $fname = ucfirst(strtolower($post['fname']));
+            $lname = ucfirst(strtolower($post['lname']));
 
             $checkName($fname, 'First name');
             $checkName($lname, 'Last name');
+
+            if (strtolower($user->getFullName()) === strtolower("{$fname} {$lname}")) {
+                $errors[] = "Your name hasn't changed";
+            }
         }
 
         if (empty($errors)) {
-            $user = $args->user;
-
             $user
                 ->setFname($fname)
                 ->setLname($lname)
