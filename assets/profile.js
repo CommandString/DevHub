@@ -99,7 +99,7 @@ $(".editable [property]").click(function (e) {
     let prop = $(this).attr("property")
     let text = $(this).text()
 
-    if (prop === "pfp" ) {
+    if (prop === "pfp") {
         return
     }
 
@@ -138,28 +138,29 @@ $(".editable [property]").click(function (e) {
                 loaderText: 'Processing...'
             }).dimmer("show")
 
-            $.ajax({
-                url: endpoint,
-                type: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    $(`[property=${prop}]`).text(data[prop])
-                    modal.dimmer("hide")
-                    modal.modal("hide")
-                },
-                error: function (xhr) {
-                    let errors = xhr?.responseJSON?.errors ?? []
-
-                    $.toast({
-                        title: `Failed to edit ${prop}`,
-                        message: errors.join(", "),
-                        class: "error"
-                    })
-
-                    modal.dimmer("hide")
+            fetch(endpoint, {
+                method: "POST",
+                body: formData
+            }).then(async (res) => {
+                if (res.ok) {
+                    return res.json()
+                } else {
+                    throw await res.json()
                 }
+            }).then((data) => {
+                $(`[property=${prop}]`).text(data[prop])
+                modal.dimmer("hide")
+                modal.modal("hide")
+            }).catch((res) => {
+                let errors = res.errors ?? []
+
+                $.toast({
+                    title: `Failed to edit ${prop}`,
+                    message: errors.join(", "),
+                    class: "error"
+                })
+
+                modal.dimmer("hide")
             })
 
             return false
