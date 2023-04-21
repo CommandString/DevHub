@@ -69,8 +69,8 @@ class Create implements RequestHandlerInterface
                     break;
                 }
 
-                if (preg_match("/[^a-zA-Z0-9]/", $tag)) {
-                    $errors[] = "Tags can only contain letters and numbers";
+                if (preg_match("/[^a-zA-Z0-9\-]/", $tag)) {
+                    $errors[] = "Tags can only contain letters, numbers, and hyphens";
                     break;
                 }
             }
