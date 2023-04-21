@@ -8,7 +8,7 @@ Your ultimate resource for coding expertise. Join a thriving community of develo
 4. Setup `.env`
 5. If you have any questions or issues, please open an [issue](https://github.com/CommandString/DevHub/issues/new) on GitHub or contact me on [discord](https://discord.gg/TgrcSkuDtQ)
 
-# Programming Languages
+# Languages Used
 * PHP
 * MySQL
 * HTML/Twig
