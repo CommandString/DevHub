@@ -96,7 +96,7 @@ class User implements JsonSerializable
             'email' => $this->email,
             'first_name' => $this->fname,
             'last_name' => $this->lname,
-            'full_name' => "{$this->fname} {$this->lname}",
+            'full_name' => $this->getFullName(),
             'registered' => $this->registered->getTimestamp(),
             'plan' => $this->plan,
         ];
@@ -115,6 +115,11 @@ class User implements JsonSerializable
     public function getLname(): string
     {
         return $this->lname;
+    }
+
+    public function getFullName(): string
+    {
+        return "{$this->fname} {$this->lname}";
     }
 
     public function isPasswordCorrect(string $password): bool
