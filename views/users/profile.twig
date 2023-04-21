@@ -14,17 +14,16 @@
                 <span property="username" class="ui big text">{{ user.username }}</span>
                 <p>
                     <i class="user icon"></i> <span property="name">{{ user.fname }} {{ user.lname }}</span><br>
-                    <i class="birthday cake icon"></i> Joined <u
-                        data-tooltip="{{ user.getRegistered('n/j/Y g:i:s A') }} (UTC)">{{
-                        user.registered.since() }}</u><br>
+                    <i class="birthday cake icon"></i> Joined <u data-tooltip="{{ user.getRegistered('n/j/Y g:i:s A') }} (UTC)">{{ user.registered.since() }}</u><br>
                     <i class="mail icon"></i> <span property="email">{{ user.email }}</span><br>
                     {% if isCurrentUser %}
                     <i class="lock icon"></i> <span property="password">Reset Password</span><br>
                     {% endif %}
-                    <span class="ui green text"><i class="up arrow icon"></i>{{ user.getTotalUpVotes() }}</span>
-                    <span class="ui red text"><i class="down arrow icon"></i>{{ user.getTotalDownVotes() }}</span>
-                    <span class="ui blue text"><i class="ui question mark icon"></i>{{ user.getTotalQuestionsAsked()
-                        }}</span>
+                    <div class="stats">
+                        <span class="ui green text"><i class="up arrow icon"></i>{{ user.getTotalUpVotes() }}</span>
+                        <span class="ui red text"><i class="down arrow icon"></i>{{ user.getTotalDownVotes() }}</span>
+                        <span class="ui blue text"><i class="ui question mark icon"></i>{{ user.getTotalQuestionsAsked() }}</span>
+                    </div>
                 </p>
             </div>
             <br>
@@ -40,18 +39,14 @@
                     <div class="item">
                         <div class="content">
                             <div class="header">{{ activity.title }}</div>
-                            {{ activity.description|raw }} <u
-                                data-tooltip="{{ activity.date.format('n/j/Y g:i:s A') }} (UTC)">{{
-                                activity.date.since() }}</u>
+                            {{ activity.description|raw }} <u data-tooltip="{{ activity.date.format('n/j/Y g:i:s A') }} (UTC)">{{ activity.date.since() }}</u>
                         </div>
                     </div>
                     {% endfor %}
                     <div class="item">
                         <div class="content">
                             <div class="header">Joined Developer Hub</div>
-                            {{ user.username }} joined Developer Hub <u
-                                data-tooltip="{{ user.getRegistered('n/j/Y g:i:s A') }} (UTC)">{{
-                                user.registered.since() }}</u>
+                            {{ user.username }} joined Developer Hub <u data-tooltip="{{ user.getRegistered('n/j/Y g:i:s A') }} (UTC)">{{ user.registered.since() }}</u>
                         </div>
                     </div>
                 </div>
@@ -65,17 +60,11 @@
                     {% for question in questions %}
                     <div onclick="window.open('/questions/{{ question.id }}', '_parent')" class="item">
                         <div class="right floated">
-                            <span class="ui green text" style="margin-right: 5px"><i class="up arrow icon"></i>{{
-                                question.upVotes }}</span><br>
-                            <span class="ui red text" style="margin-right: 5px"><i class="down arrow icon"></i>{{
-                                question.downVotes }}</span><br>
-                            <span class="ui teal text">
-                                <i class="eye icon"></i> {{ question.views }}
-                            </span><br>
-                            <span class="ui blue text" style="margin-right: 5px"><i class="comment dots icon"></i>{{
-                                question.getTotalComments() }}</span><br>
-                            <span>{{ question.answered == 0 ? '<i class="red times icon"></i>' : '<i
-                                    class="green check icon"></i>'}}</span>
+                            <span class="ui green text" style="margin-right: 5px"><i class="up arrow icon"></i>{{ question.upVotes }}</span><br>
+                            <span class="ui red text" style="margin-right: 5px"><i class="down arrow icon"></i>{{question.downVotes }}</span><br>
+                            <span class="ui teal text"> <i class="eye icon"></i> {{ question.views }}</span><br>
+                            <span class="ui blue text" style="margin-right: 5px"><i class="comment dots icon"></i>{{ question.getTotalComments() }}</span><br>
+                            <span>{{ question.answered == 0 ? '<i class="red times icon"></i>' : '<i class="green check icon"></i>'}}</span>
                         </div>
                         <div class="content">
                             <div class="header">{{ question.title }}</div>

@@ -12,6 +12,13 @@
         }
     }
 
+    .stats {
+        margin-top: -12px;
+        > span + span {
+            margin-left: 5px;
+        }
+    }
+
     [data-tab="questions"] {
         &.segment {
 
