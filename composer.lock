@@ -100,16 +100,16 @@
         },
         {
             "name": "httpsoft/http-message",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/httpsoft/http-message.git",
-                "reference": "51163fa329523fe1697e2de459ac45aa201dbb12"
+                "reference": "d2e085532fb6e65a4331d4f1a9c86f45174bc685"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/httpsoft/http-message/zipball/51163fa329523fe1697e2de459ac45aa201dbb12",
-                "reference": "51163fa329523fe1697e2de459ac45aa201dbb12",
+                "url": "https://api.github.com/repos/httpsoft/http-message/zipball/d2e085532fb6e65a4331d4f1a9c86f45174bc685",
+                "reference": "d2e085532fb6e65a4331d4f1a9c86f45174bc685",
                 "shasum": ""
             },
             "require": {
@@ -159,7 +159,7 @@
                 "issues": "https://github.com/httpsoft/http-message/issues",
                 "source": "https://github.com/httpsoft/http-message"
             },
-            "time": "2023-04-02T17:32:05+00:00"
+            "time": "2023-04-17T16:50:19+00:00"
         },
         {
             "name": "httpsoft/http-response",
@@ -993,21 +993,22 @@
         },
         {
             "name": "tnapf/router",
-            "version": "v4.3.4",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tnapf/Router.git",
-                "reference": "bb527b6213324ee5f1230698189849fc2a20d2bf"
+                "reference": "101b01cd2c7b258a09b5b1443577949c1d79da96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tnapf/Router/zipball/bb527b6213324ee5f1230698189849fc2a20d2bf",
-                "reference": "bb527b6213324ee5f1230698189849fc2a20d2bf",
+                "url": "https://api.github.com/repos/tnapf/Router/zipball/101b01cd2c7b258a09b5b1443577949c1d79da96",
+                "reference": "101b01cd2c7b258a09b5b1443577949c1d79da96",
                 "shasum": ""
             },
             "require": {
                 "commandstring/utils": "^1.4",
                 "httpsoft/http-emitter": "^1.0",
+                "httpsoft/http-message": "1.0.12",
                 "httpsoft/http-response": "^1.0",
                 "httpsoft/http-server-request": "^1.0",
                 "php": ">=8.1"
@@ -1034,9 +1035,9 @@
             "description": "Totally Not Another PHP Framework's router package",
             "support": {
                 "issues": "https://github.com/tnapf/Router/issues",
-                "source": "https://github.com/tnapf/Router/tree/v4.3.4"
+                "source": "https://github.com/tnapf/Router/tree/v4.4.4"
             },
-            "time": "2023-04-01T21:50:46+00:00"
+            "time": "2023-04-24T12:30:10+00:00"
         },
         {
             "name": "tnapf/sessioninterfaces",
