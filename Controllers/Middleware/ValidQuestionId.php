@@ -22,7 +22,7 @@ class ValidQuestionId implements RequestHandlerInterface
         $question = null;
 
         if ($id !== null) {
-            $question = Question::fetchById($id);
+            $question = Question::fetchById((int)$id);
             $args->question = $question;
         }
 
