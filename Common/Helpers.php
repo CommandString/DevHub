@@ -8,10 +8,11 @@ use Common\Configuration\Env;
 use HttpSoft\Response\HtmlResponse;
 use Tnapf\Pdo\Driver;
 
-function render(string $path, array $context = []): HtmlResponse
+function render(string $path, array $context = [], int $code = 200): HtmlResponse
 {
     return new HtmlResponse(
-        renderHtml($path, $context)
+        renderHtml($path, $context),
+        $code
     );
 }
 
