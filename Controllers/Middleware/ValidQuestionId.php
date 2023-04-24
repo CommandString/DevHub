@@ -3,7 +3,6 @@
 namespace Controllers\Middleware;
 
 use Common\Database\Question;
-use Common\Database\User;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
