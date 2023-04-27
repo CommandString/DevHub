@@ -21,6 +21,13 @@ CREATE TABLE `comments` (
   `downVotes` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `files` (
+  `id` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
+  `location` text COLLATE utf8mb4_general_ci NOT NULL,
+  `type` int NOT NULL,
+  `created` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 CREATE TABLE `newsletters` (
   `id` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(200) COLLATE utf8mb4_general_ci NOT NULL
@@ -50,6 +57,7 @@ CREATE TABLE `users` (
   `username` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `password` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `pfp` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `fname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `lname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `plan` int NOT NULL DEFAULT '1',
@@ -63,6 +71,9 @@ ALTER TABLE `activities`
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`id`);
+
 ALTER TABLE `newsletters`
   ADD PRIMARY KEY (`id`);
 
@@ -74,5 +85,6 @@ ALTER TABLE `sessions`
 
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `username` (`username`);
 COMMIT;
