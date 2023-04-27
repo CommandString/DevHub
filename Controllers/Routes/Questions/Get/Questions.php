@@ -23,6 +23,6 @@ class Questions implements RequestHandlerInterface
     ): ResponseInterface {
         $query = $request->getQueryParams()['q'] ?? null;
 
-        return render("questions.questions", compact("questions", "query"));
+        return render("questions.questions", compact("query"));
     }
 }
