@@ -11,7 +11,11 @@
         "@symfony/webpack-encore": "^4.2.0"
     },
     "scripts": {
+        "php-dev": "php -S localhost:8000 public/index.php",
         "assets-dev": "encore dev --watch",
-        "php-dev": "php -S localhost:8000 public/index.php"
+        "assets-prod": "npx encore production",
+        "install-packages": "npm i && composer i",
+        "update-packages": "npm update && composer u",
+        "copy-env": "cp .env.example .env"
     }
 }
